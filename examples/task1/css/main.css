@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#picture {
+    float: left;
+}
+
+#expressions .over,
+#proofs .over {
+    background: yellow;
+}
+
+#variables {
+    float: left;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+#variables, #proofs {
+    background-color: #66FF66;
+    height: 300px;
+}
+
+#solveWindow *::first-letter {
+    text-transform: uppercase;
+}
+
+#variables span, #proofs span {
+    display: inline-block;
+}
+
+#variables span::first-letter, #proofs span::first-letter {
+    text-transform: uppercase;
+}
+
+#expressions {
+    background-color: #99FF99;
+    height: 300px;
+}
+
+#variables, #expressions, #proofs {
+    border: 0 solid red;
+}
+
+#variables div, #expressions div, #proofs div {
+    padding-left: 10px;
+}
+
+#picture span:hover,
+#picture .over {
+    background: yellow;
+}
+
+#picture .used {
+    border: 3px solid green;
+}
+
+#picture .selected {
+    border: 3px solid yellow;
+}
+
+#expressions div, #picture div, #picture .expPicture, #proofs div {
+    cursor: pointer;
+}
+
+#variables h6 {
+    display: inline;
+    margin: 0;
+    padding: 0px 10px 0 0;
+    font-family: cursive;
+    color: red;
+}
+
+.w33 {
+    float: left;
+    width: 33%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.expPicture {
+    position: absolute;
+    border: 3px none red;
+}
+
+.mainPicture {
+    padding-right: 10px;
+}
+
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.9;
+    z-index: 1000;
+}
+
+#welcome {
+    width: 50%;
+    margin: auto;
+}
+
+#solveWindow {
+    position: absolute;
+    z-index: 1002;
+    top: 0;
+    left: 0;
+    padding: 20px;
+}
+
+.hasLegend:hover {
+    background-color: yellow;
+}
+
+.legend {
+    display: none;
+}
+
+.tooltip {
+    position: absolute;
+    z-index: 1100;
+    left: -2000px;
+    background: #dedede;
+    padding: 5px;
+    border: 1px solid #fff;
+    width: 250px;
+}
+
+.tooltip p {
+    margin: 0;
+    color: #fff;
+    background: #222;
+    padding: 2px 7px;
+}

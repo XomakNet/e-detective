@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Метод резолюций</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="../../src/resolution.lib.js"></script>
+	<script src="../../src/resModule.lib.js"></script>
+	<script src="js/main.js"></script>
+</head>
+<body>
+	<div id="overlay">
+		<div id="welcome">
+			<h1>Добро пожаловать!</h1>
+			Вам будет представлена некоторая история, состоящая из высказываний. Высказывания записаны в виде математических выражений в окне выражений. При наведении мыши на высказывание или его выражение, подсвечиваются оба элемента пары. На рисунке к истории вы можете найти улики, которые опровергают некоторые высказывания. Когда найдёте такую улику, кликните по ней, затем по выражению, которое она опровергает, после чего отрицание этого выражения будет помещено в окно доказательств. Окно доказательств - это те данные, которые вы предоставляете компьютерному детективу, который, используя данные выражения, сможет разгадать это дело. Чтобы просто переместить выражение в окно доказательств без его опровержения, кликните по нему. Для возврата выражения из окна доказательств, также необходиму кликнуть по нему.<br/>
+			Когда закончите, нажмите кнопку "расследовать" и детектив проведет расследование.<br/>
+			<button class="continueButton">Продолжить</button>
+		</div>
+
+	</div>
+	<div id="solveWindow">
+		<div id="solve">
+		
+		</div>
+		<a class="closeButton" href="#">Закрыть окно</a>
+	</div>
+	<div id="picture">
+		<img src="images/main_wb.jpg" width="75%" class="mainPicture" data-width="1200" data-height="475" style="float: left;">
+		<div class="expPicture" data-x="45" data-y="18" data-width="139" data-height="131"></div>
+		<div class="expPicture" data-x="828" data-y="253" data-width="72" data-height="69"></div>
+		<h2>История</h2>
+		Был вскрыт сейф, сигнализация не сработала.
+		Доступ к отключению сигнализации утром имеет только Алекс. Поэтому <span data-expression="LogicImplication(LogicAND(%S%,LogicNOT(%N%)),%A%)">если сигнализация работала и преступление произошло не ночью, то Алекс преступник.</span>
+		<span data-expression="LogicImplication(%LB%,%S%)">Брюс всегда включает сигнализацию, когда уходит с работы</span>, в отличие от остальных - <span data-expression="LogicImplication(LogicNOT(%LB%),LogicNOT(%S%))">остальные постоянно забывают это делать</span>.
+		<span data-expression="LogicOR(%LB%,LogicOR(%LC%,%LD%))">Вчера на работе были Карл, Дилан и Брюс</span>
+		<span data-expression="LogicAND(%MC%,LogicAND(%MD%,%MA%))">Сегодня утром на работу пришли Алекс, Карл и Дилан</span>
+		<span data-expression="LogicAND(LogicNOT(%LB%),LogicOR(%LC%,%LD%))">Вчера было чётное число, по чётным числам Брюс уезжает раньше всех в типографию.</span> По нечетным происходит наоборот.<span data-expression="%N%">Ночью камеры не работали и сейф не контролировался. </span><span data-expression="LogicImplication(LogicAND(%LC%,%MC%),%C%)">Если Карл ушёл последним и пришёл утром, то он преступник</span>
+		<span data-expression="LogicImplication(LogicAND(%LB%,%N%),%B%)">Если Брюс ушёл последним и преступление произошло ночью, то он преступник.</span><span data-expression="LogicImplication(LogicAND(%LD%,%MD%),%D%)">Если Дилан ушёл последним и пришёл утром, то он преступник.</span>
+	</div>
+	<div class="clearfix"></div>
+	<div>
+		<div id="variables" class="w33">
+			<span data-name="A" data-inversion="Алекс не виновен" data-final="true">Алекс - преступник</span>
+			<span data-name="B" data-inversion="Брюс не виновен" data-final="true">Брюс - преступник</span>
+			<span data-name="C" data-inversion="Карл не виновен" data-final="true">Карл - преступник</span>
+			<span data-name="D" data-inversion="Дилан не виновен" data-final="true">Дилан - преступник</span>
+			<span data-name="LB" data-inversion="Брюс ушёл из офиса не последним">Брюс ушёл из офиса последним</span>
+			<span data-name="LC" data-inversion="Карл ушёл из офиса не последним">Карл ушёл из офиса последним</span>
+			<span data-name="LD" data-inversion="Дилан ушёл из офиса не последним">Дилан ушёл из офиса последним</span>
+			<span data-name="N" data-inversion="преступление произошло не ночью">преступление произошло ночью</span>
+			<span data-name="MA" data-inversion="Алекс пришёл на работу не утром">Алекс пришёл на работу утром</span>
+			<span data-name="MC" data-inversion="Карл пришёл на работу не утром">Карл пришёл на работу утром</span>
+			<span data-name="MD" data-inversion="Дилан пришёл на работу не утром">Дилан пришёл на работу утром</span>
+			<span data-name="S" data-inversion="сигнализация не работала">сигнализация работала</span>
+		</div>
+		<div id="expressions" class="w33">
+			Логические выражения
+		</div>
+		<div id="proofs" class="w33">
+			<span>Окно доказательств<button class="solveButton">Разгадать</button></span>
+		</div>
+		
+	</div>
+	<div class="clearfix"></div>
+
+</body>
